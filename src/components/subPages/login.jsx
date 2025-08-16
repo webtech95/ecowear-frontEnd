@@ -9,6 +9,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${API_URL}/auth/login`, {
         email,
         password,
       });
@@ -47,7 +49,7 @@ const Login = () => {
         {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
 
         <div className="space-y-5">
-         
+
           <div>
             <label className="block text-sm font-medium mb-1">Email</label>
             <div className="relative">
@@ -63,7 +65,7 @@ const Login = () => {
             </div>
           </div>
 
-       
+
           <div>
             <label className="block text-sm font-medium mb-1">Password</label>
             <div className="relative">

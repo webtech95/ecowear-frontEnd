@@ -8,6 +8,9 @@ import { FiUser, FiMail, FiLock } from "react-icons/fi";
 const Register = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
+
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,7 +27,7 @@ const Register = () => {
     setError("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
+      const res = await axios.post(`${API_URL}auth/register`, formData);
 
       if (res.status === 200 || res.status === 201) {
         alert("Account created successfully!");

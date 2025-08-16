@@ -3,6 +3,8 @@ import axios from "axios";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -11,7 +13,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/contact/send", form);
+      await axios.post(`${API_URL}/contact/send`, form);
       alert("Message sent successfully!");
       setForm({ name: "", email: "", message: "" });
     } catch {
