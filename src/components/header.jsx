@@ -17,11 +17,11 @@ const Header = () => {
     <>
       <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-colors">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link to="/ecowear" className="flex items-center space-x-2 text-2xl font-bold text-green-700">
+          <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-green-700">
             <img src={Logo} alt="Ecowear" className="h-16 w-auto" />
           </Link>
           <nav className="hidden lg:flex gap-6 text-gray-700 font-medium">
-            <Link to="/ecowear" className="hover:text-green-700 transition">Home</Link>
+            <Link to="/" className="hover:text-green-700 transition">Home</Link>
             <Link to="/shop" className="hover:text-green-700 transition">Shop</Link>
             <Link to="/about" className="hover:text-green-700 transition">About</Link>
             <Link to="/contact" className="hover:text-green-700 transition">Contact</Link>

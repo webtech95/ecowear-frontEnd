@@ -94,7 +94,7 @@ function App() {
       <div className="bg-white text-gray-900 min-h-screen">
         <Header />
         <Routes>
-          <Route path="/ecowear" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
