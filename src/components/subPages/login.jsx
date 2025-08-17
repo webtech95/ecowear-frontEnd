@@ -29,7 +29,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
       localStorage.setItem("token", res.data.token);
       alert("Login successful!");
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }

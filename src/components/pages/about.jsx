@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Link } from "react-router-dom";
 import image from "./images/Green and White Conceptual New Look Fashion Blog Banner.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OrganicPage from "../subPages/OrganicPage";
 import PlasticPackagingPage from "../subPages/PlasticPackagingPage";
 import FairWagesPage from "../subPages/FairWagesPage";
@@ -19,6 +19,8 @@ import img17 from "../pages/images/17.webp";
 import img18 from "../pages/images/18.webp";
 import img19 from "../pages/images/19.webp";
 import img20 from "../pages/images/20.webp";
+import Banner from "../pages/images/Banner2.webp";
+
 
 const CarouselImages = [
   { id: 1, image: img11 },
@@ -35,11 +37,28 @@ const CarouselImages = [
 
 const About = () => {
   const [activeModal, setActiveModal] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+  
+    useEffect(() => {
+      const handleResize = () => setIsMobile(window.innerWidth < 768);
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
   return (
     <div className="bg-white text-gray-800">
-      <section className="w-full h-[60vh] md:h-[80vh]">
-        <Swiper
+      <section className="w-full relative z-0 m-0 p-0 overflow-hidden">
+
+        {isMobile ? (
+          <div className="w-full h-auto">
+            <img
+              src={Banner}
+              alt="Banner"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        ) : (<Swiper
           modules={[Autoplay, Navigation]}
           navigation
           autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -57,6 +76,7 @@ const About = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+        )}
       </section>
 
       <section className="relative -mt-10 z-10">

@@ -27,7 +27,7 @@ const Register = () => {
     setError("");
 
     try {
-      const res = await axios.post(`${API_URL}auth/register`, formData);
+      const res = await axios.post(`${API_URL}/auth/register`, formData);
 
       if (res.status === 200 || res.status === 201) {
         alert("Account created successfully!");

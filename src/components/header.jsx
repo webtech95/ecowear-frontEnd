@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-2 py-2 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 text-2xl font-bold text-green-700">
             <img src={Logo} alt="Ecowear" className="h-16 w-auto" />
           </Link>

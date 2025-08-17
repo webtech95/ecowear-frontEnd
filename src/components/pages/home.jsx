@@ -21,6 +21,8 @@ import img7 from "../pages/images/7.webp"
 import img8 from "../pages/images/8.webp"
 import img9 from "../pages/images/9.webp"
 import img10 from "../pages/images/10.webp"
+import { useEffect, useState } from "react";
+import Banner from "../pages/images/Banner.webp";
 
 const HomeCrousalImages = [
   { id: 1, image: img1 },
@@ -43,33 +45,56 @@ const Arrivals = [
 ];
 
 const Home = () => {
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
 
       {/* Hero Carousel */}
-      <section className="w-full h-[70vh] relative z-0">
-        <Swiper
-          modules={[Autoplay, Navigation]}
-          navigation
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop
-          slidesPerView={1}
-          className="w-full h-full"
-        >
-          {HomeCrousalImages.map((img) => (
-            <SwiperSlide key={img.id}>
-              <img
-                src={img.image}
-                alt={`Slide ${img.id}`}
-                className="w-full h-full object-cover"
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <section className="w-full relative z-0 m-0 p-0 overflow-hidden">
+
+        {isMobile ? (
+          <div className="w-full h-auto">
+            <img
+              src={Banner}
+              alt="Banner"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        ) : (
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            navigation
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop
+            slidesPerView={1}
+            className="w-full h-[70vh]"
+          >
+            {HomeCrousalImages.map((img) => (
+              <SwiperSlide key={img.id}>
+                <img
+                  src={img.image}
+                  alt={`Slide ${img.id}`}
+                  className="w-full h-full object-cover block m-0"
+                />
+
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+
       </section>
 
       {/* Hero Section */}
-      <section className="bg-gray-100 py-16 text-center">
+      <section className="bg-gray-100 py-16 text-center m-0">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Elevate Your Style with <span className="text-green-600">EcoWear</span>
@@ -129,3 +154,5 @@ const Home = () => {
 };
 
 export default Home;
+
+
